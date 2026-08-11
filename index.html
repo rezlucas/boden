@@ -42,9 +42,8 @@
       /* Acento secundário da marca — usado no destaque do título da hero sobre fundo escuro */
       --color-accent-gold: #E6A64C;
 
-      /* Gradiente de texto para headings (sobre fundo claro) */
+      /* Cor de texto para headings (sobre fundo claro) */
       --color-heading-accent: #5E7D65;
-      --gradient-heading: linear-gradient(90deg, rgba(94,125,101,1) 0%, rgba(94,125,101,0.25) 100%);
 
       /* Texto (escala escura sobre fundo claro) */
       --color-text-strong:  #072B37;
@@ -141,7 +140,7 @@
     img, picture, video, canvas, svg { display: block; max-width: 100%; }
     input, button, textarea, select { font: inherit; }
     p, h1, h2, h3, h4, h5, h6 { overflow-wrap: break-word; }
-    h1, h2, h3, h4, h5, h6 { text-wrap: balance; font-family: var(--font-heading); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); background: var(--gradient-heading); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+    h1, h2, h3, h4, h5, h6 { text-wrap: balance; font-family: var(--font-heading); font-weight: var(--font-weight-bold); line-height: var(--line-height-tight); color: var(--color-heading-accent); }
     h1 { font-size: var(--font-size-4xl); }
     h2 { font-size: var(--font-size-3xl); }
     h3 { font-size: var(--font-size-2xl); }
@@ -278,10 +277,10 @@
     .hero-split--cafe .hero-split__actions { justify-content: flex-start; flex-wrap: nowrap; }
     @media (max-width: 479px) { .hero-split--cafe .hero-split__actions { flex-direction: column; } }
     @media (min-width: 640px) { .hero-split--cafe .hero-split__inner { grid-template-columns: 0.85fr 1.15fr; } }
-    /* Imagem à direita */
-    .hero-split--cafe .hero-split__media { position: relative; min-height: 0; aspect-ratio: auto; margin-block-start: var(--space-xl); border-radius: 0; overflow: visible; box-shadow: none; background: transparent; display: flex; align-items: center; justify-content: center; }
-    .hero-split--cafe .hero-split__image { position: relative; z-index: 2; width: 100%; max-width: 620px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 44px rgba(28,10,7,0.45)); }
-    @media (min-width: 640px) { .hero-split--cafe .hero-split__media { margin-block-start: 0; } }
+    /* Imagem à direita (desktop); no mobile, imagem menor e acima do título */
+    .hero-split--cafe .hero-split__media { position: relative; min-height: 0; aspect-ratio: auto; order: -1; margin-block-end: var(--space-md); border-radius: 0; overflow: visible; box-shadow: none; background: transparent; display: flex; align-items: center; justify-content: center; }
+    .hero-split--cafe .hero-split__image { position: relative; z-index: 2; width: 100%; max-width: 240px; height: auto; object-fit: contain; filter: drop-shadow(0 30px 44px rgba(28,10,7,0.45)); }
+    @media (min-width: 640px) { .hero-split--cafe .hero-split__media { order: 0; margin-block-start: 0; margin-block-end: 0; } .hero-split--cafe .hero-split__image { max-width: 620px; } }
     /* Ícones sociais — trilho vertical à direita da hero */
     .hero-split__social { position: absolute; right: clamp(16px, 3vw, 40px); top: 96px; z-index: 6; display: none; flex-direction: column; align-items: center; gap: var(--space-md); }
     .hero-split__social-line { width: 1px; height: 28px; background: rgba(247,243,232,0.35); }
@@ -756,9 +755,9 @@
       <div class="hero-split__media">
         <img
           class="hero-split__image"
-          src="assets/images/hero-image-boden.webp"
-          alt="conjunto de embalagens de café Boden — pacote grande, sachês individuais e drip coffee — com rótulo personalizável 'a sua marca aqui', ao lado de uma caneca com coador e grãos de café"
-          width="1731" height="1463"
+          src="assets/images/image-hero.png"
+          alt="conjunto de embalagens de café Boden — pacote grande, sachês com logos de marcas parceiras e drip coffee — com rótulo personalizável 'Boden', ao lado de uma caneca com coador e grãos de café"
+          width="1646" height="1478"
           loading="eager" decoding="async"
         >
       </div>
@@ -853,6 +852,13 @@
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b77de38728928883ad0_logos-4.webp" alt="" style="cursor: pointer;">
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b777b7c2399a356caea_logos-2.webp" alt="" style="cursor: pointer;">
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b776862d0076f828356_logos-6.webp" alt="" style="cursor: pointer;">
+        <img class="image-logos" src="assets/images/brands/avantpro.png" alt="Avantpro">
+        <img class="image-logos" src="assets/images/brands/b3.png" alt="B3 — Brasil, Bolsa, Balcão">
+        <img class="image-logos" src="assets/images/brands/disney-plus.png" alt="Disney+">
+        <img class="image-logos" src="assets/images/brands/esgas.png" alt="ESGas">
+        <img class="image-logos" src="assets/images/brands/gac-motor.png" alt="GAC Motor">
+        <img class="image-logos" src="assets/images/brands/4company.png" alt="4Company">
+        <img class="image-logos" src="assets/images/brands/wellhub.png" alt="Wellhub">
 
         <!-- BLOCO 2 (duplicado para loop infinito) -->
         <span class="image-logos-clip"><img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b78269c98e8beafaa2e_logos-8.webp" alt="" style="cursor: pointer;"></span>
@@ -867,6 +873,13 @@
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b77de38728928883ad0_logos-4.webp" alt="" style="cursor: pointer;">
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b777b7c2399a356caea_logos-2.webp" alt="" style="cursor: pointer;">
         <img class="image-logos" src="https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/697a1b776862d0076f828356_logos-6.webp" alt="" style="cursor: pointer;">
+        <img class="image-logos" src="assets/images/brands/avantpro.png" alt="Avantpro">
+        <img class="image-logos" src="assets/images/brands/b3.png" alt="B3 — Brasil, Bolsa, Balcão">
+        <img class="image-logos" src="assets/images/brands/disney-plus.png" alt="Disney+">
+        <img class="image-logos" src="assets/images/brands/esgas.png" alt="ESGas">
+        <img class="image-logos" src="assets/images/brands/gac-motor.png" alt="GAC Motor">
+        <img class="image-logos" src="assets/images/brands/4company.png" alt="4Company">
+        <img class="image-logos" src="assets/images/brands/wellhub.png" alt="Wellhub">
       </div>
     </div>
   </section>
@@ -898,17 +911,17 @@
           </button>
         </li>
         <li class="gallery-grid__item">
-          <button class="gallery-grid__trigger" type="button" data-js="gallery-trigger" data-caption="Paytime — exemplo de rótulo personalizado com foto e data">
-            <img src="assets/images/confira-embalagens/Paytime.webp" alt="rótulo de café Boden personalizado com a identidade visual da Paytime" loading="lazy" decoding="async">
+          <button class="gallery-grid__trigger" type="button" data-js="gallery-trigger" data-caption="Ricardo Frizera — exemplo de rótulo personalizado com foto e data">
+            <img src="assets/images/confira-embalagens/Paytime.webp" alt="rótulo de café Boden personalizado com a identidade visual de Ricardo Frizera" loading="lazy" decoding="async">
             <span class="gallery-grid__zoom" aria-hidden="true"><svg><use href="#icon-zoom"/></svg></span>
-            <span class="gallery-grid__card-title">Paytime</span>
+            <span class="gallery-grid__card-title">Ricardo Frizera</span>
           </button>
         </li>
         <li class="gallery-grid__item">
-          <button class="gallery-grid__trigger" type="button" data-js="gallery-trigger" data-caption="Morar Construtora — exemplo de rótulo ilustrado personalizado">
-            <img src="assets/images/confira-embalagens/Morar-construtora.webp" alt="rótulo de café Boden personalizado com a identidade visual da Morar Construtora" loading="lazy" decoding="async">
+          <button class="gallery-grid__trigger" type="button" data-js="gallery-trigger" data-caption="Orion — exemplo de rótulo ilustrado personalizado">
+            <img src="assets/images/confira-embalagens/Morar-construtora.webp" alt="rótulo de café Boden personalizado com a identidade visual da Orion" loading="lazy" decoding="async">
             <span class="gallery-grid__zoom" aria-hidden="true"><svg><use href="#icon-zoom"/></svg></span>
-            <span class="gallery-grid__card-title">Morar Construtora</span>
+            <span class="gallery-grid__card-title">Orion</span>
           </button>
         </li>
         <li class="gallery-grid__item">
@@ -969,7 +982,7 @@
 
         <div class="pricing-grid__card">
           <div class="pricing-grid__card-image">
-            <img src="assets/images/pacote-section-5 (2).png" alt="três pacotes de café Boden com rótulo personalizável ao lado de grãos de café" loading="lazy" decoding="async">
+            <img src="assets/images/drip-coffe.png" alt="três sachês de Drip Coffee Boden com rótulo personalizável, ao lado de grãos de café e uma xícara" loading="lazy" decoding="async">
           </div>
           <div class="pricing-grid__card-top">
             <div class="pricing-grid__plan-name-row">
@@ -1075,22 +1088,22 @@
               <fieldset class="form-contact__group" id="f-unidades">
                 <legend class="input-field__label">Quantas unidades você estima precisar?</legend>
                 <div class="form-contact__chips">
-                  <label class="form-contact__chip"><input type="checkbox" name="unidades" value="Menos de 30 unidades"><span>Menos de 30 unidades</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="unidades" value="30-50 unidades"><span>30–50 unidades</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="unidades" value="50-100 unidades"><span>50-100 unidades</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="unidades" value="Mais de 100 unidades"><span>Mais de 100 unidades</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="unidades" value="Ainda estou definindo"><span>Ainda estou definindo</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="unidades" value="Menos de 30 unidades"><span>Menos de 30 unidades</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="unidades" value="30-50 unidades"><span>30–50 unidades</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="unidades" value="50-100 unidades"><span>50-100 unidades</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="unidades" value="Mais de 100 unidades"><span>Mais de 100 unidades</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="unidades" value="Ainda estou definindo"><span>Ainda estou definindo</span></label>
                 </div>
               </fieldset>
 
               <fieldset class="form-contact__group" id="f-tamanho">
                 <legend class="input-field__label">Tamanho</legend>
                 <div class="form-contact__chips">
-                  <label class="form-contact__chip"><input type="checkbox" name="tamanho" value="10g (Drip Coffee)"><span>10g (Drip Coffee)</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="tamanho" value="100g"><span>100g</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="tamanho" value="200g"><span>200g</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="tamanho" value="250g"><span>250g</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="tamanho" value="500g"><span>500g</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="tamanho" value="10g (Drip Coffee)"><span>10g (Drip Coffee)</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="tamanho" value="100g"><span>100g</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="tamanho" value="200g"><span>200g</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="tamanho" value="250g"><span>250g</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="tamanho" value="500g"><span>500g</span></label>
                 </div>
                 <img class="form-contact__size-preview" id="tamanhoPreview" alt="Pré-visualização da embalagem selecionada" hidden>
               </fieldset>
@@ -1098,10 +1111,10 @@
               <fieldset class="form-contact__group" id="f-prazo">
                 <legend class="input-field__label">Para quando você precisa?</legend>
                 <div class="form-contact__chips">
-                  <label class="form-contact__chip"><input type="checkbox" name="prazo" value="Essa semana"><span>Essa semana</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="prazo" value="Nos próximos 15 dias"><span>Nos próximos 15 dias</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="prazo" value="No próximo mês"><span>No próximo mês</span></label>
-                  <label class="form-contact__chip"><input type="checkbox" name="prazo" value="Sem pressa/estou planejando"><span>Sem pressa/estou planejando</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="prazo" value="Essa semana"><span>Essa semana</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="prazo" value="Nos próximos 15 dias"><span>Nos próximos 15 dias</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="prazo" value="No próximo mês"><span>No próximo mês</span></label>
+                  <label class="form-contact__chip"><input type="radio" name="prazo" value="Sem pressa/estou planejando"><span>Sem pressa/estou planejando</span></label>
                 </div>
               </fieldset>
 
@@ -1506,7 +1519,7 @@
     var UTM_KEYS = ['utm_term', 'utm_source', 'utm_campaign'];
 
     var SIZE_IMAGES = {
-      small: 'https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/6a58be3a6d386973d5495055_Embalagem%20(1).webp',
+      small: 'assets/images/drip-coffe.png',
       large: 'https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/6a58be3ae3dd1fd0d63a0a2e_Embalagem-1.webp',
       largeHighVolume: 'https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/6a58be39ddaca37142df3b58_Embalagem-2.webp'
     };
