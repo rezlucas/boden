@@ -1484,9 +1484,11 @@
     var UTM_KEYS = ['utm_term', 'utm_source', 'utm_campaign'];
 
     var SIZE_IMAGES = {
-      small: 'assets/images/drip-coffe.png',
-      large: 'https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/6a58be3ae3dd1fd0d63a0a2e_Embalagem-1.webp',
-      largeHighVolume: 'https://cdn.prod.website-files.com/696e31a7db916a717ae2cfba/6a58be39ddaca37142df3b58_Embalagem-2.webp'
+      drip: 'assets/images/drip-coffe.png',
+      '100g': 'assets/images/pacote-100g.webp',
+      '200g': 'assets/images/pacote-200g.webp',
+      '250g': 'assets/images/pacote-250g.webp',
+      '500g': 'assets/images/pacote-500g.webp'
     };
 
     var $ = function (id) { return document.getElementById(id); };
@@ -1563,37 +1565,16 @@
       return d.length > 5 ? d.replace(/(\d{5})(\d+)/, '$1-$2') : d;
     }
 
-    function parseGrams(value) {
-      var match = value.match(/(\d+(?:[.,]\d+)?)\s*(kg|g)\b/i);
-      if (!match) return null;
-      var amount = parseFloat(match[1].replace(',', '.'));
-      return match[2].toLowerCase() === 'kg' ? amount * 1000 : amount;
-    }
-
-    function unitsAbove30() {
-      return Array.from(document.querySelectorAll('input[name="unidades"]:checked')).some(function (el) {
-        var value = el.value.toLowerCase();
-        if (value.indexOf('menos de') !== -1 || value.indexOf('ainda estou definindo') !== -1) return false;
-        var match = value.match(/(\d+)/);
-        return !!match && parseInt(match[1], 10) >= 30;
-      });
-    }
-
     function updateSizePreview() {
       var preview = $('tamanhoPreview');
       if (!preview) return;
 
-      var grams = Array.from(document.querySelectorAll('input[name="tamanho"]:checked'))
-        .map(function (el) { return parseGrams(el.value); })
-        .filter(function (g) { return g !== null; });
-      var hasLarge = grams.some(function (g) { return g > 10; });
-      var hasSmall = grams.some(function (g) { return g <= 10; });
-
+      var selected = document.querySelector('input[name="tamanho"]:checked');
       var src = null;
-      if (hasLarge) {
-        src = unitsAbove30() ? SIZE_IMAGES.largeHighVolume : SIZE_IMAGES.large;
-      } else if (hasSmall) {
-        src = SIZE_IMAGES.small;
+
+      if (selected) {
+        var value = selected.value;
+        src = value.indexOf('Drip') !== -1 ? SIZE_IMAGES.drip : SIZE_IMAGES[value];
       }
 
       if (src) {
